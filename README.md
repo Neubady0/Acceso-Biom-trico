@@ -69,4 +69,4 @@ python biopass_dao/src/biopass_app.py
 
 ## Autor
 
-[Tu Nombre / Usuario]
+Eric López Guerrero
