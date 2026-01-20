@@ -1,0 +1,22 @@
+
+import psycopg2
+from src.config import Config
+
+class DBConnection:
+    _connection = None
+
+    @classmethod
+    def get_connection(cls):
+        if cls._connection is None or cls._connection.closed != 0:
+            try:
+                cls._connection = psycopg2.connect(
+                    host=Config.DB_HOST,
+                    database=Config.DB_NAME,
+                    user=Config.DB_USER,
+                    password=Config.DB_PASSWORD,
+                    port=Config.DB_PORT
+                )
+            except Exception as e:
+                print(f"Error connecting to database: {e}")
+                return None
+        return cls._connection
